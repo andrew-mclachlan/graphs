@@ -13,7 +13,7 @@ let mainWindow;
 
 function createWindow() {
     // Create the browser window.
-    mainWindow = new BrowserWindow({width: 1024, height: 768});
+    mainWindow = new BrowserWindow({width: 1000, height: 800});
 
     process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = false;
 
