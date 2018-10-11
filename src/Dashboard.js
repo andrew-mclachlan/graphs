@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -21,6 +21,9 @@ import SimpleBarChart from './BarChart';
 import StreamingDemo from './Zoom';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import HighChartChart from './highChartChart';
+import HighChartMap from './highChartMap';
+import { PlotlyBar, PlotlyScatter } from './Plotly';
 
 function TabContainer(props) {
   return (
@@ -114,7 +117,7 @@ const styles = theme => ({
   },
 });
 
-class Dashboard extends React.Component {
+class Dashboard extends Component {
   state = {
     open: true,
     value: 0
@@ -144,13 +147,17 @@ class Dashboard extends React.Component {
             <Tabs value={value} onChange={this.handleChange}>
               <Tab label="Line Chart" />
               <Tab label="Bar Chart" />
-              <Tab label="Zoom" href="#basic-tabs" />
+              <Tab label="Zoom" />
+              <Tab label="High Chart Simple" />
+              <Tab label="High Chart Map" />
+              <Tab label="Plotly Bar" />
+              <Tab label="Plotly Scatter" href="#basic-tabs" />
             </Tabs>
           </AppBar>
           <main className={classes.content}>
             {value === 0 && <TabContainer>
               <Typography variant="h4" gutterBottom component="h2">
-                Line Chart
+                Recharts Line Chart
                 </Typography>
               <Typography component="div" className={classes.chartContainer}>
                 <SimpleLineChart />
@@ -158,18 +165,50 @@ class Dashboard extends React.Component {
             </TabContainer>}
             {value === 1 && <TabContainer>
               <Typography variant="h4" gutterBottom component="h2">
-                Bar Chart
-                </Typography>
+                Recharts Bar Chart
+              </Typography>
               <Typography component="div" className={classes.chartContainer}>
                 <SimpleBarChart />
               </Typography>
             </TabContainer>}
             {value === 2 && <TabContainer>
               <Typography variant="h4" gutterBottom component="h2">
-                Zoom
-                </Typography>
+              Recharts Zoom
+              </Typography>
               <Typography component="div" className={classes.chartContainer}>
                 <StreamingDemo />
+              </Typography>
+            </TabContainer>}
+            {value === 3 && <TabContainer>
+              <Typography variant="h4" gutterBottom component="h2">
+              Highcharts Simple Chart
+              </Typography>
+              <Typography component="div" className={classes.chartContainer}>
+                <HighChartChart />
+              </Typography>
+            </TabContainer>}
+            {value === 4 && <TabContainer>
+              <Typography variant="h4" gutterBottom component="h2">
+              Highcharts Map
+              </Typography>
+              <Typography component="div" className={classes.chartContainer}>
+                <HighChartMap />
+              </Typography>
+            </TabContainer>}
+            {value === 5 && <TabContainer>
+              <Typography variant="h4" gutterBottom component="h2">
+              Plotly Bar
+              </Typography>
+              <Typography component="div" className={classes.chartContainer}>
+                <PlotlyBar />
+              </Typography>
+            </TabContainer>}
+            {value === 6 && <TabContainer>
+              <Typography variant="h4" gutterBottom component="h2">
+              Plotly Scatter
+              </Typography>
+              <Typography component="div" className={classes.chartContainer}>
+                <PlotlyScatter />
               </Typography>
             </TabContainer>}
           </main>

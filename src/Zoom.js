@@ -101,12 +101,12 @@ class StreamingDemo extends Component {
             top: 'dataMax+1',
             bottom: 'dataMin',
             top2: 'dataMax+50',
-            bottom: 'dataMin+50'
+            bottom2: 'dataMin+50'
         }));
     }
 
     render() {
-        const { data, barIndex, left, right, refAreaLeft, refAreaRight, top, bottom, top2, bottom2 } = this.state;
+        const { data, left, right, refAreaLeft, refAreaRight, top, bottom, top2, bottom2 } = this.state;
 
         return (
             <div className="highlight-bar-charts">
